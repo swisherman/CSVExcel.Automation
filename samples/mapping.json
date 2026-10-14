@@ -1,0 +1,1 @@
+{"Key":"SKU","Columns":[{"Name":"SKU","Aliases":["SKU","ProductCode","Item"],"Required":true},{"Name":"Name","Aliases":["Name","Title","Description"],"Required":true},{"Name":"Price","Aliases":["Price","UnitPrice","Cost"],"Required":true,"NonnegativeDecimal":true}]}
