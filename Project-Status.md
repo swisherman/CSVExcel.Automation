@@ -1,10 +1,10 @@
 # Project Status
 State: Active
-Work status: Core demo verified / edge-case testing pending
+Work status: Automated CSV edge-case regression suite verified / Excel-specific testing pending
 Priority: Medium
-Last meaningful attention: October 14, 2026
-Completed: feature/requirements outline, integration opportunities, C# starter, synthetic demo inputs, acceptance script, Fiverr draft and Upwork continuation plan.
-Next: complete edge-case checks, package the executable, then record the demo and prepare gallery assets. Publish gig after verification. Maintain two weekly Upwork pursuit sessions.
+Last meaningful attention: October 18, 2026
+Completed: requirements and integration outline, C# starter, supplier demo, Windows build and CSV/XLSX verification, and automated edge-case regression suite (6 scenarios passed, 0 failed).
+Next: test Excel-specific edge cases and structurally invalid mapping configurations. Then package the Windows executable, record the demonstration, and prepare Fiverr gallery assets. Maintain two weekly Upwork pursuit sessions.
 
 ## October 14, 2026 - Windows Verification
 - .NET SDK: 10.0.401.
