@@ -1,10 +1,27 @@
 # Project Status
-State: Active
-Work status: Automated CSV edge-case regression suite verified / Excel-specific testing pending
-Priority: Medium
-Last meaningful attention: October 18, 2026
-Completed: requirements and integration outline, C# starter, supplier demo, Windows build and CSV/XLSX verification, and automated edge-case regression suite (6 scenarios passed, 0 failed).
-Next: test Excel-specific edge cases and structurally invalid mapping configurations. Then package the Windows executable, record the demonstration, and prepare Fiverr gallery assets. Maintain two weekly Upwork pursuit sessions.
+
+## Status
+
+- **State:** Active
+- **Priority:** Medium
+- **Health:** On Track
+- **Work Status:** In Progress
+- **Last Meaningful Attention:** October 18, 2026
+- **Review Frequency:** Weekly
+- **Source Folder:** `E:\repos\CsvExcel.Automation`
+- **Related Projects:** Software.ServiceKits, Fiverr Business Setup, Upwork Profile Kit
+
+## Current Outcome
+
+Develop a reliable C#/.NET utility that automates CSV and Excel processing for small-business workflows, with potential for downloadable software and custom freelance services.
+
+## Current Milestone
+
+Core CSV demonstration verified. Automated edge-case regression suite established with six passing scenarios and zero failures. Excel-specific and structural configuration testing is next.
+
+## Next Action
+
+Expand automated tests to cover Excel formulas, missing headers, empty workbooks, and structurally invalid mapping configurations. Then package the Windows executable and prepare the demonstration video and Fiverr gallery assets.
 
 ## October 14, 2026 - Windows Verification
 - .NET SDK: 10.0.401.
