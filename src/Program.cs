@@ -11,6 +11,7 @@ try
     var output = Path.GetFullPath(args[1]);
     if (input.Equals(output, StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("Use a separate output folder.");
     var config = JsonSerializer.Deserialize<Config>(File.ReadAllText(args[2])) ?? throw new Exception("Invalid configuration.");
+    ValidateConfig(config);
     var files = Directory.GetFiles(input).Where(p => new[]{".csv", ".xlsx"}.Contains(Path.GetExtension(p).ToLowerInvariant())).OrderBy(p => p, StringComparer.Ordinal).ToArray();
     if (files.Length == 0) throw new Exception("No CSV/XLSX input files.");
     var accepted = new List<string[]>();
@@ -65,6 +66,28 @@ try
     return 0;
 }
 catch (Exception e) { Console.Error.WriteLine(e.Message); return 1; }
+
+static void ValidateConfig(Config config)
+{
+    if (string.IsNullOrWhiteSpace(config.Key)) throw new Exception("Configuration Key must be nonblank.");
+    if (config.Columns == null || config.Columns.Length == 0) throw new Exception("Configuration Columns must contain at least one column.");
+    var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+    foreach (var column in config.Columns)
+    {
+        if (column == null) throw new Exception("Configuration Columns cannot contain null entries.");
+        if (string.IsNullOrWhiteSpace(column.Name) || column.Name != column.Name.Trim()) throw new Exception("Output column names must be nonblank and trimmed.");
+        if (!names.Add(column.Name)) throw new Exception("Output column names must be unique.");
+        if (column.Aliases == null || column.Aliases.Length == 0 || column.Aliases.Any(a => string.IsNullOrWhiteSpace(a) || a != a.Trim()))
+            throw new Exception("Each output column needs nonblank, trimmed aliases.");
+        if (column.Aliases.Distinct(StringComparer.OrdinalIgnoreCase).Count() != column.Aliases.Length)
+            throw new Exception("Aliases within an output column must be unique.");
+    }
+    if (!config.Columns.Any(c => c.Name == config.Key)) throw new Exception("Configured key is not an output column.");
+    var owners = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+    foreach (var column in config.Columns)
+    foreach (var alias in column.Aliases)
+        if (!owners.TryAdd(alias, column.Name)) throw new Exception("An input alias cannot map to multiple output columns.");
+}
 
 static List<string[]> Read(string file)
 {
