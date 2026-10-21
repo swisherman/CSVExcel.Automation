@@ -1,6 +1,7 @@
-﻿**/bin/
+**/bin/
 **/obj/
 .vs/
 outputs/
 verification-*/
 release/
+/CSV-Excel-Automation-Demo-2026-10-21.mp4
